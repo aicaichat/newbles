@@ -6,6 +6,11 @@ proxies:
     password: "mySecureBlessPassword123"
     sni: new.bless.top
     skip-cert-verify: false
+    network: ws
+    ws-opts:
+      path: /bs
+      headers:
+        Host: new.bless.top
 
 proxy-groups:
   - name: "Proxy"
