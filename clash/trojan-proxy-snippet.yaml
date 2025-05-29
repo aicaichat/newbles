@@ -1,0 +1,7 @@
+- name: "Trojan-new.bless.top"
+  type: trojan
+  server: new.bless.top
+  port: 443
+  password: "mySecureBlessPassword123"
+  sni: new.bless.top
+  skip-cert-verify: false 
