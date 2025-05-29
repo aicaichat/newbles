@@ -33,4 +33,23 @@ sudo docker-compose up -d
 
 # 3. 输出 Clash 配置路径
 CLASH_CONFIG="$(cd "$(dirname "$0")/.." && pwd)/clash/clash-config.yaml"
-echo "Clash 配置已生成：$CLASH_CONFIG" 
+echo "Clash 配置已生成：$CLASH_CONFIG"
+
+# 4. 自动写入 nginx stream 反向代理配置
+NGINX_STREAM_CONF="/etc/nginx/nginx-stream-trojan.conf"
+sudo tee $NGINX_STREAM_CONF > /dev/null <<EOF
+stream {
+    map \$ssl_preread_server_name \$trojan_backend {
+        new.bless.top 127.0.0.1:8443;
+        default       127.0.0.1:443;
+    }
+
+    server {
+        listen 443 reuseport;
+        proxy_pass \$trojan_backend;
+        ssl_preread on;
+    }
+}
+EOF
+sudo nginx -t && sudo nginx -s reload
+echo "nginx stream 反向代理配置已写入 $NGINX_STREAM_CONF 并重载。" 
