@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   trojan-go:
-    image: p4gefau1t/trojan-go:latest
+    image: teddysun/trojan-go:latest
     container_name: trojan-go
     restart: always
     ports:
@@ -9,6 +9,6 @@ services:
     volumes:
       - ./trojan-go/config.json:/config.json:ro
       - ./cert:/cert:ro
-    command: [
-      "-config", "/config.json"
-    ] 
+    # command: [
+    #   "--config", "/config.json"
+    # ] 
