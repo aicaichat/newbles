@@ -2,22 +2,22 @@
 set -e
 
 # 0. 创建 webroot 目录并写入测试文件
-WEBROOT="/var/www/new.bless.top/"
+WEBROOT="/var/www/ai.bless.top/"
 sudo mkdir -p "$WEBROOT/.well-known/acme-challenge/"
 echo test | sudo tee "$WEBROOT/.well-known/acme-challenge/test.txt"
-echo "已创建 webroot: $WEBROOT，并写入测试文件。请确保 nginx 配置正确，访问 http://new.bless.top/.well-known/acme-challenge/test.txt 能看到 test。"
+echo "已创建 webroot: $WEBROOT，并写入测试文件。请确保 nginx 配置正确，访问 http://ai.bless.top/.well-known/acme-challenge/test.txt 能看到 test。"
 
 # 0.5 自动生成 nginx 配置并重载 nginx
-NGINX_CONF="/etc/nginx/conf.d/new.bless.top.conf"
+NGINX_CONF="/etc/nginx/conf.d/ai.bless.top.conf"
 sudo tee $NGINX_CONF > /dev/null <<EOF
 server {
     listen 80;
-    server_name new.bless.top;
+    server_name ai.bless.top;
 
-    root /var/www/new.bless.top/;
+    root /var/www/ai.bless.top/;
 
     location /.well-known/acme-challenge/ {
-        alias /var/www/new.bless.top/.well-known/acme-challenge/;
+        alias /var/www/ai.bless.top/.well-known/acme-challenge/;
         try_files \$uri =404;
     }
 }
@@ -33,23 +33,4 @@ sudo docker-compose up -d
 
 # 3. 输出 Clash 配置路径
 CLASH_CONFIG="$(cd "$(dirname "$0")/.." && pwd)/clash/clash-config.yaml"
-echo "Clash 配置已生成：$CLASH_CONFIG"
-
-# 4. 自动写入 nginx stream 反向代理配置
-NGINX_STREAM_CONF="/etc/nginx/nginx-stream-trojan.conf"
-sudo tee $NGINX_STREAM_CONF > /dev/null <<EOF
-stream {
-    map \$ssl_preread_server_name \$trojan_backend {
-        new.bless.top 127.0.0.1:8443;
-        default       127.0.0.1:443;
-    }
-
-    server {
-        listen 443 reuseport;
-        proxy_pass \$trojan_backend;
-        ssl_preread on;
-    }
-}
-EOF
-sudo nginx -t && sudo nginx -s reload
-echo "nginx stream 反向代理配置已写入 $NGINX_STREAM_CONF 并重载。" 
+echo "Clash 配置已生成：$CLASH_CONFIG" 

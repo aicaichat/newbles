@@ -8,13 +8,13 @@
     "mySecureBlessPassword123"
   ],
   "ssl": {
-    "cert": "./cert/fullchain.cer",
-    "key": "./cert/new.bless.top.key",
-    "sni": "new.bless.top"
+    "cert": "/cert/fullchain.cer",
+    "key": "/cert/ai.bless.top.key",
+    "sni": "ai.bless.top"
   },
   "websocket": {
     "enabled": true,
-    "path": "/bs",
-    "host": "new.bless.top"
+    "path": "/ws",
+    "host": "ai.bless.top"
   }
 } 
