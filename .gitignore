@@ -1,19 +1,31 @@
 requirement.md
 
 # 证书文件 - 敏感信息，不应提交到仓库
-cert/
+cert/*.key
+cert/*.pem
+cert/*.crt
+cert/*.cer
+cert/*.p12
+cert/*.pfx
+cert/*.rsa
+cert/*.rsa.key
+cert/*.rsa.pub
+
+# 但允许说明文件
+!cert/README.md
+!cert/.gitkeep
+
+# SSL 证书相关（其他位置）
+ssl/
+tls/
+
+# 私钥文件（全局）
 *.key
 *.pem
 *.crt
 *.cer
 *.p12
 *.pfx
-
-# SSL 证书相关
-ssl/
-tls/
-
-# 私钥文件
 *.rsa
 *.rsa.key
 *.rsa.pub
