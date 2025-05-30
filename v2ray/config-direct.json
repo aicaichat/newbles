@@ -1,0 +1,62 @@
+{
+  "log": {
+    "loglevel": "info"
+  },
+  "dns": {
+    "servers": ["8.8.8.8", "8.8.4.4"]
+  },
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "12345678-1234-5678-9abc-123456789abc",
+            "level": 1,
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/cert/ai.bless.top.pem",
+              "keyFile": "/cert/ai.bless.top.key"
+            }
+          ]
+        },
+        "wsSettings": {
+          "path": "/bs",
+          "headers": {
+            "Host": "ai.bless.top"
+          }
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+} 

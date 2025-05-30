@@ -1,0 +1,48 @@
+{
+  "log": {
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ai.bless.top",
+            "port": 443,
+            "users": [
+              {
+                "id": "12345678-1234-5678-9abc-123456789abc",
+                "alterId": 0,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ai.bless.top"
+        },
+        "wsSettings": {
+          "path": "/bs",
+          "headers": {
+            "Host": "ai.bless.top"
+          }
+        }
+      }
+    }
+  ]
+} 

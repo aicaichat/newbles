@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  v2ray:
+    image: v2fly/v2fly-core:latest
+    container_name: v2ray
+    restart: always
+    ports:
+      - "127.0.0.1:8443:8443"
+    volumes:
+      - ./v2ray/config.json:/etc/v2ray/config.json:ro
+    command: ["v2ray", "run", "-config", "/etc/v2ray/config.json"] 

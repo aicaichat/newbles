@@ -1,0 +1,42 @@
+{
+  "log": {
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "ai.bless.top",
+            "port": 443,
+            "password": "mySecureBlessPassword123"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "ai.bless.top"
+        },
+        "wsSettings": {
+          "path": "/bs",
+          "headers": {
+            "Host": "ai.bless.top"
+          }
+        }
+      }
+    }
+  ]
+} 
