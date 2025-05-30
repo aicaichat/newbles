@@ -4,9 +4,11 @@
   "local_port": 8443,
   "remote_addr": "httpbin.org",
   "remote_port": 80,
+  "log_level": 1,
   "password": [
     "mySecureBlessPassword123"
   ],
+  "disable_http_check": false,
   "transport": {
     "type": "websocket",
     "websocket": {
@@ -16,6 +18,9 @@
     }
   },
   "router": {
+    "enabled": false
+  },
+  "api": {
     "enabled": false
   }
 } 
