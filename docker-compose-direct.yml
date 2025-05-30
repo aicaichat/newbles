@@ -8,5 +8,4 @@ services:
       - "443:443"
     volumes:
       - ./xray/config-direct.json:/etc/xray/config.json:ro
-      - /root/newbles/cert:/cert:ro
-    command: xray -config /etc/xray/config.json 
+      - /root/newbles/cert:/cert:ro 
