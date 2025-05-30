@@ -1,0 +1,43 @@
+{
+  "log": {
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "listen": "0.0.0.0",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "12345678-1234-5678-9abc-123456789abc",
+            "level": 1,
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/cert/fullchain.cer",
+              "keyFile": "/cert/ai.bless.top.key"
+            }
+          ]
+        },
+        "wsSettings": {
+          "path": "/bs",
+          "host": "ai.bless.top"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+} 
