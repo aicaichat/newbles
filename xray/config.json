@@ -12,15 +12,18 @@
           {
             "password": "mySecureBlessPassword123"
           }
+        ],
+        "fallbacks": [
+          {
+            "dest": 80
+          }
         ]
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/bs",
-          "headers": {
-            "Host": "ai.bless.top"
-          }
+          "acceptProxyProtocol": false,
+          "path": "/bs"
         }
       }
     }
