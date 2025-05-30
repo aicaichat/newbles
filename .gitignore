@@ -1,1 +1,40 @@
-requirement.md 
+requirement.md
+
+# 证书文件 - 敏感信息，不应提交到仓库
+cert/
+*.key
+*.pem
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# SSL 证书相关
+ssl/
+tls/
+
+# 私钥文件
+*.rsa
+*.rsa.key
+*.rsa.pub
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+
+# 敏感配置文件（如果包含密码）
+config/*.json.backup
+config/*.yaml.backup
+
+# macOS 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker 相关
+.env 
