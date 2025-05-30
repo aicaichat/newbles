@@ -2,13 +2,13 @@ proxies:
   - name: "Trojan-ai.bless.top"
     type: trojan
     server: ai.bless.top
-    port: 8443
+    port: 443
     password: "mySecureBlessPassword123"
     sni: ai.bless.top
     skip-cert-verify: false
     network: ws
     ws-opts:
-      path: /ws
+      path: /bs
       headers:
         Host: ai.bless.top
 
@@ -20,4 +20,4 @@ proxy-groups:
       - DIRECT
 
 rules:
-  - MATCH,Proxy 
+  - MATCH,Proxy

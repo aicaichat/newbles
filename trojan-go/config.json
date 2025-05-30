@@ -1,20 +1,15 @@
 {
   "run_type": "server",
-  "local_addr": "0.0.0.0",
+  "local_addr": "127.0.0.1",
   "local_port": 8443,
-  "remote_addr": "127.0.0.1",
+  "remote_addr": "httpbin.org",
   "remote_port": 80,
   "password": [
     "mySecureBlessPassword123"
   ],
-  "ssl": {
-    "cert": "/cert/fullchain.cer",
-    "key": "/cert/ai.bless.top.key",
-    "sni": "ai.bless.top"
-  },
   "websocket": {
     "enabled": true,
-    "path": "/ws",
+    "path": "/bs",
     "host": "ai.bless.top"
   }
 } 
