@@ -30,7 +30,7 @@ sudo docker exec xray-trojan cat /etc/xray/config.json 2>/dev/null || echo "无�
 echo ""
 echo "6️⃣ 测试端口连通性..."
 echo "测试端口连通性："
-timeout 3 bash -c 'cat < /dev/null > /dev/tcp/127.0.0.1/8443' && echo "✅ 8443 端口可连接" || echo "❌ 8443 端口连接失败"
+timeout 3 xbash -c 'cat < /dev/null > /dev/tcp/127.0.0.1/8443' && echo "✅ 8443 端口可连接" || echo "❌ 8443 端口连接失败"
 
 echo ""
 echo "7️⃣ 检查进程状态..."

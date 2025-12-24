@@ -1,0 +1,17 @@
+VMess 分享链接（用于移动端导入）：
+
+vmess://eyJ2IjoiMiIsInBzIjoiYWkuYmxlc3MudG9wIiwiYWRkIjoiYWkuYmxlc3MudG9wIiwicG9ydCI6IjQ0MyIsInR5cGUiOiJub25lIiwiaWQiOiIyNWMwOWU2MC1lNjlkLTRiNmItYjExOS0zMDAxODBlZjdmYmIiLCJhaWQiOiIwIiwibmV0Ijoid3MiLCJwYXRoIjoiL2JzIiwiaG9zdCI6ImFpLmJsZXNzLnRvcCIsInRscyI6InRscyJ9
+
+手动配置参数：
+- 服务器：ai.bless.top
+- 端口：443
+- UUID：25c09e60-e69d-4b6b-b119-300180ef7fbb
+- 加密：auto
+- 传输协议：WebSocket
+- 路径：/bs
+- TLS：启用
+- SNI：ai.bless.top
+
+本地代理端口：
+- HTTP：7890（Clash 格式）
+- SOCKS5：1080（V2Ray 格式） 

@@ -1,0 +1,61 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7890
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+# TUN 模式配置（虚拟网卡）
+tun:
+  enable: true
+  stack: system  # 或使用 gvisor（需要额外安装）
+  dns-hijack:
+    - any:53
+  auto-route: true
+  auto-detect-interface: true
+
+# DNS 配置
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+  fallback:
+    - 8.8.8.8
+    - 8.8.4.4
+    - tls://dns.google:853
+    - https://dns.google/dns-query
+
+proxies:
+  - name: "VMess-ai.bless.top"
+    type: vmess
+    server: ai.bless.top
+    port: 443
+    uuid: 25c09e60-e69d-4b6b-b119-300180ef7fbb
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: ai.bless.top
+    network: ws
+    ws-opts:
+      path: /bs
+      headers:
+        Host: ai.bless.top
+
+proxy-groups:
+  - name: "Proxy"
+    type: select
+    proxies:
+      - "VMess-ai.bless.top"
+      - DIRECT
+
+rules:
+  - MATCH,Proxy
+

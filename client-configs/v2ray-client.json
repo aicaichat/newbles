@@ -5,11 +5,17 @@
   "inbounds": [
     {
       "port": 1080,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "socks",
       "settings": {
         "udp": true
       }
+    },
+    {
+      "port": 1081,
+      "listen": "0.0.0.0",
+      "protocol": "http",
+      "settings": {}
     }
   ],
   "outbounds": [
@@ -22,7 +28,7 @@
             "port": 443,
             "users": [
               {
-                "id": "12345678-1234-5678-9abc-123456789abc",
+                "id": "25c09e60-e69d-4b6b-b119-300180ef7fbb",
                 "alterId": 0,
                 "security": "auto"
               }

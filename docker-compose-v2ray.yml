@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   v2ray:
-    image: v2fly/v2fly-core:latest
+    image: teddysun/v2ray:latest
     container_name: v2ray
     restart: always
     ports:

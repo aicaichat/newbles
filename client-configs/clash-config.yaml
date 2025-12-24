@@ -1,0 +1,35 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7890
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+proxies:
+  - name: "VMess-ai.bless.top"
+    type: vmess
+    server: ai.bless.top
+    port: 443
+    uuid: 25c09e60-e69d-4b6b-b119-300180ef7fbb
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: ai.bless.top
+    network: ws
+    ws-opts:
+      path: /bs
+      headers:
+        Host: ai.bless.top
+
+proxy-groups:
+  - name: "Proxy"
+    type: select
+    proxies:
+      - "VMess-ai.bless.top"
+      - DIRECT
+
+rules:
+  - MATCH,Proxy 
